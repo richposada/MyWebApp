@@ -10,7 +10,7 @@ concurrency: ci-${{ github.event.number }}
 env:
   AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '6.0'                 # set this to the .NET Core version to use
-  WEBAPP_NAME: GHAWebApp
+  WEBAPP_NAME: ghawebapp
   RESOURCE_GROUP: githubactions-rg
   SLOT_NAME: pr-${{ github.event.number }}
 
@@ -92,7 +92,7 @@ jobs:
       uses: mshick/add-pr-comment@v1
       with:
         message: |
-          ## Preview link: https://${{ env.WEBAPP_NAME }}-${{env.SLOT_NAME }}.azurewebsites.net 
+          ## Preview link: https://${{ env.WEBAPP_NAME }}-${{env.SLOT_NAME }}.azurewebsites.us 
           
           - Your changes have been deployed to the preview site. The preview site will update as you add more commits to this branch.
           - The preview link is shareable, but will be deleted when the pull request is merged or closed.
