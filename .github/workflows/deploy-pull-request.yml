@@ -81,13 +81,12 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         environment: AzureUSGovernment
     
-    - name: Deploy to slot on staging site
-      uses: azure/webapps-deploy@v1
-      id: deploy-to-webapp
-      with: 
+    - name: Deploy to Azure WebApp Staging Slot
+      uses: Azure/webapps-deploy@v2
+      with:
         app-name: ${{ env.WEBAPP_NAME }}
-        slot-name:  ${{ env.SLOT_NAME }}
-        package: '*.war'
+        slot-name: ${{ env.SLOT_NAME }}
+        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
     
     - name: Comment on PR with the preview link
       uses: mshick/add-pr-comment@v1
