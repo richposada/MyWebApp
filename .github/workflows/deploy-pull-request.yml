@@ -54,6 +54,7 @@ jobs:
       uses: azure/login@v1.4.6
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+        environment: AzureUSGovernment
 
     - name: Create slot on staging site
       run: az webapp deployment slot create --resource-group $RESOURCE_GROUP  --name $WEBAPP_NAME --slot $SLOT_NAME
@@ -75,9 +76,10 @@ jobs:
         name: .net-app
 
     - name: Log into Azure CLI with service principal
-      uses: azure/login@v1.1
+      uses: azure/login@v1.4.6
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+        environment: AzureUSGovernment
     
     - name: Deploy to slot on staging site
       uses: azure/webapps-deploy@v1
